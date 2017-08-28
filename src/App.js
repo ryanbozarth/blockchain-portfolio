@@ -6,7 +6,7 @@ import { BrowserRouter as Router,
 import 'normalize.css';
 import './App.css';
 
-import Header from './Header'
+import Home from './pages/home/Home'
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
       <Router>
         <div>
             <Switch>
-              <Route exact path='/' component={Header} />
+              <Route exact path='/' component={Home} />
             </Switch>
         </div>
       </Router>
