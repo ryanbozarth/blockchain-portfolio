@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Stats from './Stats';
+import Summary from './Summary';
 import Content from './Content';
 import './Home.css';
 
@@ -9,7 +9,7 @@ class Home extends Component {
     return (
       <div className="grid">
         <Header />
-        <Stats />
+        <Summary />
         <Content />
       </div>
     );

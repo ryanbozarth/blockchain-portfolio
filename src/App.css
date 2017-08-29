@@ -3,8 +3,38 @@ body {
   letter-spacing: .02em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 h1, h3, h4 {
   font-weight: 800;
+}
+
+h1 {
+  font-size: 2em;
+  -webkit-margin-before: 0.67em;
+  -webkit-margin-after: 0.67em;
+
+}
+
+h4 {
+  font-size: 1em;
+  -webkit-margin-before: 1.67em;
+  -webkit-margin-after: 1.33em;
+}
+
+h5 {
+  font-size: 0.938em;
+  font-weight: 600;
+  -webkit-margin-before: .4em;
+  -webkit-margin-after: .67em;
+  color: #70707F;
+}
+
+.green {
+  color: #34A946;
+}
+
+.red {
+  color: #DB3A39;
 }

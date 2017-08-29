@@ -4,6 +4,7 @@ import { BrowserRouter as Router,
          Switch
        } from 'react-router-dom'
 import 'normalize.css';
+import './Reset.css';
 import './App.css';
 
 import Home from './pages/home/Home'

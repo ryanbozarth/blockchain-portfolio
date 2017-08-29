@@ -1,0 +1,30 @@
+.summary {
+  display: flex;
+  flex-flow: row no-wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: calc(40px - 1em);
+}
+
+.summary-card {
+  /*border: red 1px solid;*/
+  flex-grow: 1;
+  min-width: 150px;
+  max-width: 200px;
+  height: 75px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  /*flex-basis: 17.5%;*/
+  max-width: 17.5%;
+  border-right: 1px solid #E1E4EA;
+}
+
+.summary-card:last-of-type {
+  border: none;
+}
+
+.primary-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+}

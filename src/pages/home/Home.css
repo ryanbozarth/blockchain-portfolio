@@ -5,18 +5,18 @@
   grid-template-rows: 150px 150px 1fr;
   grid-template-columns: 1fr;
 	grid-template-areas: "header"
-                       "stats"
+                       "summary"
                        "content"
 }
 
 .header {
   grid-area: header;
-  border: red 1px solid;
+  /*border: red 1px solid;*/
 }
 
-.stats {
-  grid-area: stats;
-  border: red 1px solid;
+.summary {
+  grid-area: summary;
+  /*border: red 1px solid;*/
 }
 
 .content {
@@ -30,7 +30,7 @@
   	grid-template-areas: "header"
                          "content"
   }
-  .stats {
+  .summary {
     display: none;
   }
   .header > h1 {
