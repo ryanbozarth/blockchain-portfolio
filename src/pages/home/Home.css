@@ -24,7 +24,7 @@
   border: red 1px solid;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 920px) {
   .grid {
     grid-template-rows: 84px 1fr;
   	grid-template-areas: "header"

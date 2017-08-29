@@ -7,17 +7,13 @@
 }
 
 .summary-card {
-  /*border: red 1px solid;*/
-  flex-grow: 1;
+  flex: 1 1 17.5%;
   min-width: 150px;
   max-width: 200px;
   height: 75px;
-  padding: 0 1rem;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  /*flex-basis: 17.5%;*/
-  max-width: 17.5%;
+  padding: 0 1em;
   border-right: 1px solid #E1E4EA;
+  /*border: 1px solid red;*/
 }
 
 .summary-card:last-of-type {
@@ -25,6 +21,6 @@
 }
 
 .primary-heading {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: 800;
 }

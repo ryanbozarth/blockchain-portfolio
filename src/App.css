@@ -14,7 +14,16 @@ h1 {
   font-size: 2em;
   -webkit-margin-before: 0.67em;
   -webkit-margin-after: 0.67em;
+}
 
+h3 {
+  font-size: 0.938em;
+  -webkit-margin-before: 0.67em;
+  -webkit-margin-after: 0.67em;
+  font-weight: 500;
+  color: #70707F;
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
 
 h4 {
