@@ -1,22 +1,33 @@
 .content {
-  background-color: #F6F6F7;
   display: flex;
-  flex-flow: row no-wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  background-color: #F6F6F7;
   padding-left: 40px;
+}
+
+.content-summary {
+  flex-flow: row wrap;
+  display: none;
+}
+
+.content-portfolio {
+  flex-flow: row nowrap;
 }
 
 .card {
   background-color: #FFF;
-  flex: 1 1 70%;
+  flex: 1 0 45%;
   min-width: 250px;
-  max-width: 450px;
+  max-width: 500px;
   min-height: 350px;
   max-height: 412px;
-  /*padding: 0 1em 1em 1em;*/
   margin: 1em 1em 1em 0;
-  border-top: 45px solid #D8D8D8;
+  border-top: 45px solid #E0E0E0;
+}
+
+.summary-tile {
+  flex: 0 1 100%;
+  min-height: 335px;
+  max-width: 1017px;
 }
 
 .card > h3 {
@@ -28,20 +39,31 @@
   display: flex;
   flex-flow: row no-wrap;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+  color: #70707F;
   border-bottom: 1px solid #E1E4EA;
   padding: .6em 1em;
   vertical-align: baseline;
 }
 
+.card-row:last-of-type{
+  border-bottom: none;
+}
+
 .card-row > p {
-  flex: 0 0 70%;
+  flex: 0 0 50%;
   font-size: 0.938em;
-  color: #70707F;
   margin: .5em 0;
+}
+
+.card-row > p:last-of-type {
+  text-align: right;
+}
+
+.card-row:last-of-type > p {
+  flex: 1 0 50%;
 }
 
 .card-row > .primary-heading {
   font-size: 1.5em;
-
 }

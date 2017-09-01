@@ -33,8 +33,21 @@
   .summary {
     display: none;
   }
+  .content-summary {
+    display: block;
+  }
   .header > h1 {
     display: none;
+  }
+  .header > h4 {
+    padding-left: 30px;
+    line-height: 2;
+  }
+}
+
+@media (max-width: 568px) {
+  .content-portfolio {
+    flex-wrap: wrap;
   }
 }
 

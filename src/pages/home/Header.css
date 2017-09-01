@@ -10,10 +10,3 @@
 .header > h1 {
   padding-top: 5px;
 }
-
-@media (max-width: 920px) {
-  .header > h4 {
-    padding-left: 30px;
-    line-height: 2;
-  }
-}
