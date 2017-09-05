@@ -11,17 +11,14 @@
 
 .header {
   grid-area: header;
-  /*border: red 1px solid;*/
 }
 
 .summary {
   grid-area: summary;
-  /*border: red 1px solid;*/
 }
 
 .content {
   grid-area: content;
-  border: red 1px solid;
 }
 
 @media (max-width: 920px) {

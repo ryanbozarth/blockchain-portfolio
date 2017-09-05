@@ -7,7 +7,7 @@ import 'normalize.css';
 import './Reset.css';
 import './App.css';
 
-import Home from './pages/home/Home'
+import Home from './components/Home'
 
 class App extends Component {
   render() {
