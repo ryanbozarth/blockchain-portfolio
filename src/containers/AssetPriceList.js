@@ -6,8 +6,9 @@ function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
-round(1.005, 2)
-
+// function accountingColor(value) {
+//   return value > 0 ? addClass('green') : addClass('black');
+// }
 
 class AssetPriceList extends Component {
   componentDidMount() {
@@ -15,13 +16,8 @@ class AssetPriceList extends Component {
   }
 
   renderPrices() {
-    const { bitcoin, ethereum, litecoin } = this.props.prices
-    console.log(bitcoin)
-    if (!bitcoin) {
-      return <div></div>
-    }
-      else {
-        return (
+    const { bitcoin, ethereum, litecoin } = this.props.prices;
+    return !bitcoin ? <div></div> :
           <div>
             <div className="card-row">
               <p>{bitcoin.name}</p>
@@ -39,9 +35,9 @@ class AssetPriceList extends Component {
               <p>*Based off of GMT</p>
             </div>
           </div>
-        )
+
       }
-    }
+
 
   render() {
 
