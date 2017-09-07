@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPrices } from '../actions';
+import _ from 'lodash';
 
 function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
-// function accountingColor(value) {
-//   return value > 0 ? addClass('green') : addClass('black');
-// }
+function getColor(value) {
+  return Number(value) > 0 ? ('green') :
+         Number(value) < 0 ? ('red') : ('');
+}
 
 class AssetPriceList extends Component {
   componentDidMount() {
@@ -17,30 +19,25 @@ class AssetPriceList extends Component {
 
   renderPrices() {
     const { bitcoin, ethereum, litecoin } = this.props.prices;
-    return !bitcoin ? <div></div> :
-          <div>
-            <div className="card-row">
-              <p>{bitcoin.name}</p>
-              <p className="primary-heading">${round(bitcoin.price_usd, 2).toLocaleString()}</p>
-            </div>
-            <div className="card-row">
-              <p>{ethereum.name}</p>
-              <p className="primary-heading">${round(ethereum.price_usd, 2).toLocaleString()}</p>
-            </div>
-            <div className="card-row">
-              <p>{litecoin.name}</p>
-              <p className="primary-heading">${round(litecoin.price_usd, 2).toLocaleString()}</p>
-            </div>
+    const coins = _.compact([bitcoin, ethereum, litecoin]);
+    const coinTemplate = _.map(coins, (coin) => {
+        return (
+          <div className="card-row">
+            <p>{coin.name}</p>
+            <p className={getColor(coin.percent_change_24h) + " primary-heading"}>${round(coin.price_usd, 2).toLocaleString()}</p>
+          </div>
+        )
+      })
+        return <div>
+             {coinTemplate}
             <div className="card-row footnote">
               <p>*Based off of GMT</p>
             </div>
           </div>
-
       }
 
 
   render() {
-
     return (
       <div className="card">
         <h3>Asset Prices</h3>
