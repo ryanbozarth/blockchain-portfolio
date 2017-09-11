@@ -2,6 +2,27 @@ import React, { Component } from 'react';
 
 import './Summary.css';
 
+function returnOnInvestment(opts) {
+  let {earnings, initialInvestment} = opts,
+      result = {};
+
+  enforceNumber(opts);
+  if (!earnings || !initialInvestment) {
+    throw new Error('Earnings and initial investment are required and must be numbers.');
+  }
+
+  result.raw = (earnings - initialInvestment) / initialInvestment;
+  result.rounded = Math.round(result.raw * 10000) / 10000;
+  result.percent = result.rounded * 100;
+
+  return result;
+}
+//
+// returnOnInvestment( {
+//   earnings: 89700,
+//   initialInvestment: 70000
+// } );
+
 class Summary extends Component {
   render() {
     return (
