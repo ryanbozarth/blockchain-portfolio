@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPrices } from '../actions';
 import _ from 'lodash';
+import { getColor } from '../utils/index';
 
 function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
-}
-
-function getColor(value) {
-  return Number(value) > 0 ? ('green') :
-         Number(value) < 0 ? ('red') : ('');
 }
 
 class AssetPriceList extends Component {
