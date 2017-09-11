@@ -22,7 +22,7 @@ class AssetPriceList extends Component {
     const coins = _.compact([bitcoin, ethereum, litecoin]);
     const coinTemplate = _.map(coins, (coin) => {
         return (
-          <div className="card-row">
+          <div className="card-row" key={coin.id}>
             <p>{coin.name}</p>
             <p className={getColor(coin.percent_change_24h) + " primary-heading"}>${round(coin.price_usd, 2).toLocaleString()}</p>
           </div>
