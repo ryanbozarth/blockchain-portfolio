@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPrices } from '../actions';
+import { fetchPriceList } from '../actions';
 import _ from 'lodash';
-import { getColor } from '../utils/index';
-
-function round(value, decimals) {
-  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
-}
+import { getColor, round } from '../utils/index';
 
 class AssetPriceList extends Component {
-  componentDidMount() {
-    this.props.fetchPrices();
+  componentWillMount() {
+    this.props.fetchPriceList();
   }
 
-  renderPrices() {
-    const { bitcoin, ethereum, litecoin } = this.props.prices;
+  renderPriceList() {
+    const { bitcoin, ethereum, litecoin } = this.props.pricesList
     const coins = _.compact([bitcoin, ethereum, litecoin]);
     const coinTemplate = _.map(coins, (coin) => {
         return (
@@ -31,20 +27,18 @@ class AssetPriceList extends Component {
             </div>
           </div>
       }
-
-
   render() {
     return (
       <div className="card">
         <h3>Asset Prices</h3>
-          {this.renderPrices()}
+          {this.renderPriceList()}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { prices: state.prices }
+  return { pricesList: state.prices.pricesList }
 }
 
-export default  connect(mapStateToProps, { fetchPrices })(AssetPriceList);
+export default connect(mapStateToProps, { fetchPriceList })(AssetPriceList);
