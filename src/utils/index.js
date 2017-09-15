@@ -12,3 +12,7 @@
     return Number(value) > 0 ? ('green') :
            Number(value) < 0 ? ('red') : ('');
   }
+
+  export function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }

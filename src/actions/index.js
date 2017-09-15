@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-export const FETCH_PRICES = 'fetch_prices';
+export const FETCH_PRICE_LIST = 'FETCH_PRICES';
+export const AMOUNT_EARNED = 'AMOUNT_EARNED';
 
 const ROOT_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 
-export function fetchPrices() {
+export function fetchPriceList() {
   const request = axios.get(`${ROOT_URL}`)
-                  // .then(res => {
-                  //   const data = {bitcoin: res.bitcoin,
-                  //                 ethereum: res.ethereum,
-                  //                 litecoin: res.litecoin
-                  //   }
-                  //   return data
-                  // })
 
-  return {
-    type: FETCH_PRICES,
-    payload: request
-  };
+  return (dispatch) => {
+    request.then((data) => {
+      dispatch({ type: FETCH_PRICE_LIST, payload: data })
+    });
+  }
+}
+
+export function amountEarned(data) {
+    return (dispatch) =>
+     dispatch({ type: AMOUNT_EARNED, payload: data });
 }

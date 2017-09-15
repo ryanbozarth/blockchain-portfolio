@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import profile from '../server';
+import { amountEarned } from '../actions';
 import { enforceNumber, getColor } from '../utils/index';
+import _ from 'lodash';
 
-import './Summary.css';
+import '../components/Summary.css';
 
 function returnOnInvestment(opts) {
   let {earnings, initialInvestment} = opts,
@@ -20,15 +23,20 @@ function returnOnInvestment(opts) {
   return result.percent;
 }
 
-function amountEarned(current, initial) {
+function calculateEarned(current, initial) {
   let result = current - initial;
   return result;
 }
+let amount = calculateEarned(profile.currentValue, profile.amountInvested);
 
-let amount = amountEarned(profile.currentValue, profile.amountInvested);
+
 
 class Summary extends Component {
+  componentWillMount() {
+    this.props.amountEarned(amount);
+  }
   render() {
+    console.log(this.props.user.amountEarned)
     return (
       <div className="summary">
         <div className="summary-card">
@@ -45,7 +53,7 @@ class Summary extends Component {
         </div>
         <div className="summary-card border-left">
           <h5>Amount Earned</h5>
-          <p className={getColor(amount) + " primary-heading"}>{amountEarned(profile.currentValue, profile.amountInvested).toLocaleString()}</p>
+          <p className={getColor(amount) + " primary-heading"}>{_.get(this.props, 'user.amountEarned', 0).toLocaleString()}</p>
         </div>
         <div className="summary-card border-left">
           <h5>Earnings % (ROI)</h5>
@@ -58,4 +66,8 @@ class Summary extends Component {
   }
 }
 
-export default Summary;
+function mapStateToProps(state) {
+  return { user: state.prices.user }
+}
+
+export default connect(mapStateToProps, { amountEarned })(Summary);

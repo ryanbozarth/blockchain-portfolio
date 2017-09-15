@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import Summary from './Summary';
+import Summary from '../containers/Summary';
 import Content from './Content';
 import './Home.css';
 
