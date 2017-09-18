@@ -1,42 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import profile from '../server';
-import { amountEarned } from '../actions';
+import { amountEarned, roi } from '../actions';
 import { enforceNumber, getColor } from '../utils/index';
 import _ from 'lodash';
 
 import '../components/Summary.css';
 
-function returnOnInvestment(opts) {
-  let {earnings, initialInvestment} = opts,
-      result = {};
+function returnOnInvestment(currentValue, amountInvested) {
+  let result = {};
 
-  enforceNumber(opts);
-  if (!earnings || !initialInvestment) {
-    throw new Error('Earnings and initial investment are required and must be numbers.');
-  }
+  // enforceNumber(currentValue, amountInvested);
+  // if (!currentValue || !amountInvested) {
+  //   throw new Error('Earnings and initial investment are required and must be numbers.');
+  // }
 
-  result.raw = (earnings - initialInvestment) / initialInvestment;
+  result.raw = (currentValue - amountInvested) / amountInvested;
   result.rounded = Math.round(result.raw * 10000) / 10000;
   result.percent = result.rounded * 100;
-
+  console.log(result.percent)
   return result.percent;
 }
+
+let roiResult = returnOnInvestment(profile.currentValue, profile.amountInvested);
 
 function calculateEarned(current, initial) {
   let result = current - initial;
   return result;
 }
+
 let amount = calculateEarned(profile.currentValue, profile.amountInvested);
 
-
-
 class Summary extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.amountEarned(amount);
+    this.props.roi(roiResult);
   }
   render() {
-    console.log(this.props.user.amountEarned)
     return (
       <div className="summary">
         <div className="summary-card">
@@ -57,8 +57,7 @@ class Summary extends Component {
         </div>
         <div className="summary-card border-left">
           <h5>Earnings % (ROI)</h5>
-          <p className={getColor(profile.roi) + " primary-heading"}>{
-            returnOnInvestment({earnings: profile.currentValue, initialInvestment: profile.amountInvested}).toLocaleString()}%
+          <p className={getColor(roiResult) + " primary-heading"}>{_.get(this.props, 'user.roi', 0).toLocaleString()}%
         </p>
         </div>
       </div>
@@ -70,4 +69,4 @@ function mapStateToProps(state) {
   return { user: state.prices.user }
 }
 
-export default connect(mapStateToProps, { amountEarned })(Summary);
+export default connect(mapStateToProps, { amountEarned, roi })(Summary);

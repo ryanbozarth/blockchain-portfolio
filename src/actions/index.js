@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCH_PRICE_LIST = 'FETCH_PRICES';
 export const AMOUNT_EARNED = 'AMOUNT_EARNED';
+export const ROI = 'ROI';
 
 const ROOT_URL = 'https://api.coinmarketcap.com/v1/ticker/';
 
@@ -18,4 +19,9 @@ export function fetchPriceList() {
 export function amountEarned(data) {
     return (dispatch) =>
      dispatch({ type: AMOUNT_EARNED, payload: data });
+}
+
+export function roi(data) {
+    return (dispatch) =>
+     dispatch({ type: ROI, payload: data });
 }
