@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { getColor, round } from '../utils/index';
 
 class AssetPriceList extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchPriceList();
   }
 
